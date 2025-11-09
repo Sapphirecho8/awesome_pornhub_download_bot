@@ -8,6 +8,7 @@
 - 完整日志（Rolling file）保存在 `logs/bot.log`
 
 欢迎直接使用机器人：https://t.me/awesome_pornhub_download_bot
+
 欢迎关注频道 Pornhub 精选：https://t.me/awesome_pornhub
 
 ## 快速开始（Docker Compose）
@@ -79,7 +80,9 @@ mkdir -p /var/lib/telegram-bot-api/uploads
 ```
 
 4. 启动本地 Bot API Server
+
 在 8081 端口运行本地 Bot API，分享数据目录供机器人容器/进程使用
+
 注意替换 TELEGRAM_API_ID/HASH
 
 ```bash
