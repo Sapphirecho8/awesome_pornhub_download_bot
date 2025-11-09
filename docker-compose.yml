@@ -1,0 +1,31 @@
+services:
+  botapi:
+    image: aiogram/telegram-bot-api:latest
+    container_name: botapi
+    restart: unless-stopped
+    environment:
+      - TELEGRAM_API_ID=123123
+      - TELEGRAM_API_HASH=314354dd3245
+      - TELEGRAM_LOCAL=1
+    volumes:
+      - botapi-data:/var/lib/telegram-bot-api
+    # no ports exposed publicly; bot talks via service name
+
+  bot:
+    image: sapphirecho8/awesome_pornhub_download_bot:latest
+    container_name: awesome_pornhub_download_bot
+    depends_on:
+      - botapi
+    restart: unless-stopped
+    environment:
+      - BOT_TOKEN=xxx
+      - ADMIN_IDS=123,456
+      - CHANNEL_ID=-100xxxxxxxx
+      - SEND_TO_CHANNEL=true
+      - BOT_API_BASE_URL=http://botapi:8081/bot
+      - BOT_API_FILE_URL=http://botapi:8081/file/bot
+    volumes:
+      - botapi-data:/var/lib/telegram-bot-api
+
+volumes:
+  botapi-data:
